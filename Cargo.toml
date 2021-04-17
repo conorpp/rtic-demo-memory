@@ -1,0 +1,36 @@
+[package]
+name = "rtic-demo-memory"
+version = "0.1.0"
+authors = ["Conor Patrick <conorpp94@gmail.com>"]
+edition = "2018"
+
+[[bin]]
+name = "main"
+path = "src/main.rs"
+
+[dependencies]
+lpc55-rtic = "0.5.5"
+cortex-m-semihosting = "0.3.5"
+heapless = "0.6"
+
+panic-halt = "0.2.0"
+panic-semihosting = "0.5.6"
+
+
+
+[dependencies.lpc55-hal]
+git = "https://github.com/lpc55/lpc55-hal"
+branch = "main"
+features = ["littlefs", "rtic-peripherals"]
+
+[features]
+default = []
+
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "z"
+incremental = false
+debug = true
+
